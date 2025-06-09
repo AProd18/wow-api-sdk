@@ -8,7 +8,7 @@ const run = async () => {
   const character = await getCharacterProfile("eu", "Sylvanas", "Scartx");
   console.log("Character:", character.name);
 
-  const itemMedia = await getItemMedia(19019); // Thunderfury
+  const itemMedia = await getItemMedia("eu", 19019); // Thunderfury
   console.log("Item Media URL:", itemMedia.assets?.[0]?.value);
 
   const characterMedia = await getCharacterMedia("eu", "Sylvanas", "Scartx");
