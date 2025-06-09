@@ -1,7 +1,7 @@
 import { getItem, getCharacterProfile } from "./index.js";
 
 const run = async () => {
-  const item = await getItem(19019);
+  const item = await getItem(19019, "en_GB", "eu");
   console.log("Item:", item.name);
 
   const character = await getCharacterProfile("eu", "Sylvanas", "Scartx");
