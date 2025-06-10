@@ -19,10 +19,15 @@ This SDK provides a streamlined interface to interact with the Blizzard World of
 
 ## Installation
 
-Copy the SDK files into your project or integrate as a module. Ensure you have dependencies like `axios` installed.
-
 ```bash
-npm install axios
+npm install wow-api-sdk
+```
+
+```jsx
+import { getCharacterData } from "wow-api-sdk";
+
+const data = await getCharacterData("characterName", "realm");
+console.log(data);
 ```
 
 ```jsx
