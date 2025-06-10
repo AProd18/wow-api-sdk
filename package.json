@@ -1,15 +1,24 @@
 {
   "name": "wow-api-sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js SDK for retrieving World of Warcraft character and item data via Blizzards API.",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "wow",
+    "world of warcraft",
+    "warcraft",
+    "wow api"
+  ],
+  "author": "Aleksandar Prodanovic",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AProd18/wow-api-sdk.git"
+  },
   "dependencies": {
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",
