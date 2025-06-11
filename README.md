@@ -49,6 +49,10 @@ const characterMedia = await getCharacterMedia("us", "stormrage", "thrall");
 
 // Fetch item media with fallback
 const itemMedia = await getItemMedia("eu", 18803);
+
+// Fetches the character's specializations including the active one (e.g. DPS, Healer, Tank).
+const specs = await getCharacterSpecializations("eu", "Sylvanas", "Scartx");
+console.log(specs.active_specialization.name); // e.g., "Holy"
 ```
 
 ## Error Handling
