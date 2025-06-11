@@ -1,3 +1,7 @@
-import { getItem, getCharacterProfile } from "./lib/api.js";
+import {
+  getItem,
+  getCharacterProfile,
+  getCharacterSpecializations,
+} from "./lib/api.js";
 
-export { getItem, getCharacterProfile };
+export { getItem, getCharacterProfile, getCharacterSpecializations };
