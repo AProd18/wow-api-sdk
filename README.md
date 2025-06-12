@@ -1,27 +1,22 @@
 # WoW API SDK
 
-## Overview
-
-This SDK provides a streamlined interface to interact with the Blizzard World of Warcraft API. It encapsulates API calls with built-in features like caching, dynamic region handling, token management, and robust error handling. Designed to simplify fetching character profiles, item data, and media resources from different Blizzard regions.
+A simple and flexible SDK for interacting with the [Blizzard World of Warcraft API](https://develop.battle.net/documentation/world-of-warcraft). It provides streamlined access to character profiles, items, media, gear, specializations, and more—with built-in caching, token management, and error handling.
 
 ## Features
 
-- Dynamic region support via `regionHost()` helper
-- Response caching to improve performance and reduce redundant calls
-- Centralized OAuth token retrieval with `getAccessToken()`
-- Error handling with descriptive custom messages
-- Fallback logic for character and item media endpoints to default region (`eu`) if requested region data is unavailable
-- Helper functions for fetching:
-  - Character profiles (`getCharacterProfile`)
-  - Character media (`getCharacterMedia`)
-  - Item data (`getItem`)
-  - Item media (`getItemMedia`)
+- Multi-region support with automatic fallback logic
+- In-memory caching to reduce redundant API calls
+- Built-in OAuth token management
+- Modular API helpers for common use cases
+- Robust error handing with meaningful messages
 
 ## Installation
 
 ```bash
 npm install wow-api-sdk
 ```
+
+## Quick Start
 
 ```jsx
 import { getCharacterData } from "wow-api-sdk";
@@ -32,41 +27,60 @@ console.log(data);
 
 ```jsx
 import {
-  getItem,
   getCharacterProfile,
   getCharacterMedia,
+  getCharacterSpecializations,
+  getCharacterEquipment,
+  getItem,
   getItemMedia,
-} from "./api.js";
-
-// Fetch WoW item data by ID
-const item = await getItem(18803, "en_GB", "us");
+} from "wow-api-sdk";
 
 // Fetch character profile
 const profile = await getCharacterProfile("eu", "twisting-nether", "scartx");
 
-// Fetch character media with fallback
-const characterMedia = await getCharacterMedia("us", "stormrage", "thrall");
-
-// Fetch item media with fallback
-const itemMedia = await getItemMedia("eu", 18803);
-
 // Fetches the character's specializations including the active one (e.g. DPS, Healer, Tank).
 const specs = await getCharacterSpecializations("eu", "Sylvanas", "Scartx");
 console.log(specs.active_specialization.name); // e.g., "Holy"
+
+// Get item data and media
+const item = await getItem(18803, "en_GB", "us");
+const itemMedia = await getItemMedia("us", 18803);
+
+// Fetch character media with fallback
+const characterMedia = await getCharacterMedia("eu", "Sylvanas", "Scartx");
 ```
+
+## Available Methods
+
+| Function                      | Description                                            |
+| ----------------------------- | ------------------------------------------------------ |
+| `getCharacterProfile`         | Fetches core character info (level, race, class, etc.) |
+| `getCharacterMedia`           | Retrieves character portraits and visuals              |
+| `getCharacterSpecializations` | Returns active and inactive specialization data        |
+| `getCharacterEquipment`       | Fetches gear currently equipped by the character       |
+| `getItem`                     | Retrieves item stats and metadata by ID                |
+| `getItemMedia`                | Fetches item icon and visual resources                 |
 
 ## Error Handling
 
 All API functions implement try/catch blocks and throw descriptive errors when calls fail. The media fetching functions implement fallback to the default region (eu) if data is not found for the requested region, improving resilience.
 
-## Development
+```jsx
+try {
+  const media = await getCharacterMedia("us", "sylvanas", "nonexistent");
+} catch (err) {
+  console.error("Error fetching character media:", err.message);
+}
+```
 
-- The SDK uses a centralized fetchFromAPI function that handles caching and token authorization.
+## How it Works
 
-- Region hosts are dynamically resolved via regionHost(region) helper.
+    - All API calls use fetchFromAPI() which:
 
-- OAuth tokens are retrieved from getAccessToken().
+        Handles access tokens via getAccessToken()
+        Applies in-memory caching with cacheGet() / cacheSet()
+        Adds proper headers and retry logic
 
-- Cache is managed in-memory via cacheGet() and cacheSet().
+    - Region-based URLs are constructed via regionHost(region)
 
-- Error handling is done consistently with clear messages and fallback logic for media endpoints.
+    - JSON responses are returned directly with no transformation
