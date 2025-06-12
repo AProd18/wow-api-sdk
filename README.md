@@ -75,12 +75,12 @@ try {
 
 ## How it Works
 
-    - All API calls use fetchFromAPI() which:
+- All API calls use `fetchFromAPI()` which:
 
-        Handles access tokens via getAccessToken()
-        Applies in-memory caching with cacheGet() / cacheSet()
-        Adds proper headers and retry logic
+  - Handles access tokens via `getAccessToken()`
+  - Applies in-memory caching with `cacheGet()` / `cacheSet()`
+  - Adds proper headers and retry logic
 
-    - Region-based URLs are constructed via regionHost(region)
+- Region-based URLs are constructed via `regionHost(region)`
 
-    - JSON responses are returned directly with no transformation
+- JSON responses are returned directly with no transformation
