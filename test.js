@@ -6,6 +6,7 @@ import {
   getCharacterEquipment,
   getCharacterAchievements,
   getCharacterMounts,
+  getCharacterTitles,
 } from "./lib/api.js";
 
 const run = async () => {
@@ -69,6 +70,13 @@ const run = async () => {
     console.log("First Mount:", mounts.mounts[0]?.mount?.name);
   } else {
     console.log("No mounts found.");
+  }
+  const titles = await getCharacterTitles("eu", "Sylvanas", "Scartx");
+
+  if (titles?.titles?.length) {
+    console.log("First Title:", titles.titles[0]?.name);
+  } else {
+    console.log("No titles found.");
   }
 };
 

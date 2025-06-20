@@ -55,6 +55,10 @@ console.log(
   "First Achievement:",
   achievements.achievements[0].achievement.name
 );
+
+// Returns the list of character titles the player has earned
+const titles = await getCharacterTitles("eu", "Sylvanas", "Scartx");
+console.log("First Title:", titles.titles[0].name);
 ```
 
 ## Available Methods
@@ -69,6 +73,7 @@ console.log(
 | `getItemMedia`                | Fetches item icon and visual resources                 |
 | `getCharacterAchievements`    | Returns earned achievements for the character          |
 | `getCharacterMounts`          | Returns all collected mounts                           |
+| `getCharacterTitles`          | Returns character titles earned by the player          |
 
 ## Error Handling
 
