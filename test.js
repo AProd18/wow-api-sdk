@@ -7,6 +7,7 @@ import {
   getCharacterAchievements,
   getCharacterMounts,
   getCharacterTitles,
+  getCharacterPets,
 } from "./lib/api.js";
 
 const run = async () => {
@@ -77,6 +78,14 @@ const run = async () => {
     console.log("First Title:", titles.titles[0]?.name);
   } else {
     console.log("No titles found.");
+  }
+
+  const pets = await getCharacterPets("eu", "Sylvanas", "Scartxx");
+
+  if (pets?.pets?.length) {
+    console.log("First Pet:", pets.pets[0]?.species?.name);
+  } else {
+    console.log("No pets found.");
   }
 };
 

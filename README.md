@@ -59,6 +59,10 @@ console.log(
 // Returns the list of character titles the player has earned
 const titles = await getCharacterTitles("eu", "Sylvanas", "Scartx");
 console.log("First Title:", titles.titles[0].name);
+
+// Returns the list of battle pets collected by the character
+const pets = await getCharacterPets("eu", "Sylvanas", "Scartx");
+console.log("First Pet:", pets.pets[0]?.creature?.name);
 ```
 
 ## Available Methods
@@ -74,6 +78,7 @@ console.log("First Title:", titles.titles[0].name);
 | `getCharacterAchievements`    | Returns earned achievements for the character          |
 | `getCharacterMounts`          | Returns all collected mounts                           |
 | `getCharacterTitles`          | Returns character titles earned by the player          |
+| `getCharacterPets`            | Returns collected battle pets by the character         |
 
 ## Error Handling
 
