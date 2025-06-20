@@ -68,6 +68,7 @@ console.log(
 | `getItem`                     | Retrieves item stats and metadata by ID                |
 | `getItemMedia`                | Fetches item icon and visual resources                 |
 | `getCharacterAchievements`    | Returns earned achievements for the character          |
+| `getCharacterMounts`          | Returns all collected mounts                           |
 
 ## Error Handling
 

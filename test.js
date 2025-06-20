@@ -5,6 +5,7 @@ import {
   getCharacterSpecializations,
   getCharacterEquipment,
   getCharacterAchievements,
+  getCharacterMounts,
 } from "./lib/api.js";
 
 const run = async () => {
@@ -60,6 +61,14 @@ const run = async () => {
     );
   } else {
     console.log("No achievements found.");
+  }
+
+  const mounts = await getCharacterMounts("eu", "Sylvanas", "Scartx");
+
+  if (mounts?.mounts?.length) {
+    console.log("First Mount:", mounts.mounts[0]?.mount?.name);
+  } else {
+    console.log("No mounts found.");
   }
 };
 
