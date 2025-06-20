@@ -4,6 +4,7 @@ import {
   getItemMedia,
   getCharacterSpecializations,
   getCharacterEquipment,
+  getCharacterAchievements,
 } from "./lib/api.js";
 
 const run = async () => {
@@ -44,6 +45,21 @@ const run = async () => {
     });
   } else {
     console.log("No equipment found.");
+  }
+
+  const achievements = await getCharacterAchievements(
+    "eu",
+    "Sylvanas",
+    "Scartx"
+  );
+
+  if (achievements && achievements.achievements?.length) {
+    console.log(
+      "First Achievement:",
+      achievements.achievements[0].achievement.name
+    );
+  } else {
+    console.log("No achievements found.");
   }
 };
 

@@ -48,6 +48,13 @@ const itemMedia = await getItemMedia("us", 18803);
 
 // Fetch character media with fallback
 const characterMedia = await getCharacterMedia("eu", "Sylvanas", "Scartx");
+
+// Returns the list of achievements earned by the character
+const achievements = await getCharacterAchievements("eu", "Sylvanas", "Scartx");
+console.log(
+  "First Achievement:",
+  achievements.achievements[0].achievement.name
+);
 ```
 
 ## Available Methods
@@ -60,6 +67,7 @@ const characterMedia = await getCharacterMedia("eu", "Sylvanas", "Scartx");
 | `getCharacterEquipment`       | Fetches gear currently equipped by the character       |
 | `getItem`                     | Retrieves item stats and metadata by ID                |
 | `getItemMedia`                | Fetches item icon and visual resources                 |
+| `getCharacterAchievements`    | Returns earned achievements for the character          |
 
 ## Error Handling
 
