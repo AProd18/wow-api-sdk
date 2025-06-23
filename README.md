@@ -79,6 +79,7 @@ console.log("First Pet:", pets.pets[0]?.creature?.name);
 | `getCharacterMounts`          | Returns all collected mounts                           |
 | `getCharacterTitles`          | Returns character titles earned by the player          |
 | `getCharacterPets`            | Returns collected battle pets by the character         |
+| `getCharacterPvpSummary`      | Returns the character's PvP statistics and rankings    |
 
 ## Error Handling
 
