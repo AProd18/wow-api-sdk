@@ -9,6 +9,7 @@ import {
   getCharacterPets,
   getItemMedia,
   getCharacterEquipment,
+  getCharacterPvpSummary,
 } from "./lib/api.js";
 
 export {
@@ -22,4 +23,5 @@ export {
   getCharacterPets,
   getItemMedia,
   getCharacterEquipment,
+  getCharacterPvpSummary,
 };
